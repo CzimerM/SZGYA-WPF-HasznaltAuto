@@ -131,7 +131,7 @@
                 </Grid>
             </Border>
         </Grid>
-        <ListBox Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <ListBox Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="lstbxCarSaleList">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
