@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SZGYA_WPF_HasznaltAuto"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -135,7 +136,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{Binding Name}"></Label>
-                        <Label Content="{Binding Path=FormFactor, Converter={x:EnumToCollectionConverter}, Mode=OneTime}"/>
+                        <Label Content="{Binding Path=FormFactor, Converter={local:EnumToCollectionConverter}, Mode=OneTime}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
