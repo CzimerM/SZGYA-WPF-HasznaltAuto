@@ -10,7 +10,7 @@ using System.Windows.Markup;
 
 namespace SZGYA_WPF_HasznaltAuto
 {
-    enum Fuel
+    public enum Fuel
     {
         [Description("Mindegy")]
         ALL = 0,
@@ -22,7 +22,7 @@ namespace SZGYA_WPF_HasznaltAuto
         ELECTRIC 
     }
 
-    enum Form
+    public enum Form
     {
         [Description("Mindegy")]
         ALL = 0,
