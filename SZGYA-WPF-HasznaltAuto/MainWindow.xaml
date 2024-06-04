@@ -15,10 +15,11 @@
         <StackPanel Orientation="Horizontal">
             <Label VerticalAlignment="Center">Keresés: </Label>
             <TextBox Width="200px" Margin="10,15"></TextBox>
+            <Button Margin="10,15" Click="btnSearchClick"  Content="Keresés"></Button>
         </StackPanel>
         <Grid Grid.Row="1">
             <Grid.Resources>
-                <Style TargetType="ListBox">
+                <Style TargetType="ComboBox">
                     <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
                     <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
                     <Setter Property="Margin" Value="10,18" />
@@ -34,6 +35,9 @@
                     <Setter Property="Background" Value="GhostWhite"></Setter>
                     <Setter Property="BorderBrush" Value="Black"></Setter>
                     <Setter Property="BorderThickness" Value="1"></Setter>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="10,10"></Setter>
                 </Style>
             </Grid.Resources>
             <Grid.ColumnDefinitions>
@@ -51,7 +55,7 @@
                         <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0">Márka</Label>
-                    <ListBox Grid.Row="1" x:Name="Brand"></ListBox>
+                    <ComboBox Grid.Row="1" x:Name="Brand"></ComboBox>
                 </Grid>
             </Border>
             <Border Grid.Row="0" Grid.Column="1">
@@ -61,7 +65,7 @@
                         <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0">Modell</Label>
-                    <ListBox Grid.Row="1" x:Name="Model"></ListBox>
+                    <ComboBox Grid.Row="1" x:Name="Model"></ComboBox>
                 </Grid>
             </Border>
             <Border Grid.Row="0" Grid.Column="2">
@@ -71,7 +75,7 @@
                         <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0">Kivitel</Label>
-                    <ListBox Grid.Row="1" x:Name="FormFactor"></ListBox>
+                    <ComboBox ItemsSource="{Binding Path=SelectedFormFactor, Converter={local:EnumToCollectionConverter}, Mode=OneTime}" SelectedValuePath="Value" DisplayMemberPath="Description" SelectedValue="{Binding Path=SelectedFormFactor, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" x:Name="cmbxFormFactor"></ComboBox>
                 </Grid>
             </Border>
             <Border Grid.Row="0" Grid.Column="3">
@@ -81,7 +85,7 @@
                         <RowDefinition Height="2*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0">Üzemanyag</Label>
-                    <ListBox Grid.Row="1" x:Name="FuelType"></ListBox>
+                    <ComboBox ItemsSource="{Binding Path=SelectedFuelType, Converter={local:EnumToCollectionConverter}, Mode=OneTime}" SelectedValuePath="Value" DisplayMemberPath="Description" SelectedValue="{Binding Path=SelectedFuelType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" x:Name="cmbxFuelType"></ComboBox>
                 </Grid>
             </Border>
             <Border Grid.Row="0" Grid.Column="4">
@@ -96,14 +100,14 @@
                             <RowDefinition Height="2*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Label Grid.Row="0">Év</Label>
-                        <ListBox Grid.Row="1" x:Name="YearBeggining"></ListBox>
+                        <ComboBox Grid.Row="1" x:Name="cmbxYearBeggining"></ComboBox>
                     </Grid>
                     <Grid Grid.Row="1" Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"></RowDefinition>
                             <RowDefinition Height="2*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <ListBox Grid.Row="1" x:Name="YearEnd"></ListBox>
+                        <ComboBox Grid.Row="1" x:Name="YearEnd"></ComboBox>
                     </Grid>
                 </Grid>
             </Border>
@@ -136,7 +140,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{Binding Name}"></Label>
-                        <Label Content="{Binding Path=FormFactor, Converter={local:EnumToCollectionConverter}, Mode=OneTime}"/>
+                        <Label Content="{Binding Path=GetFormFactorDesc}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

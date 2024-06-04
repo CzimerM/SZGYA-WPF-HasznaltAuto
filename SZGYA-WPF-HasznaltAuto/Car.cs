@@ -5,12 +5,13 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Markup;
 
 namespace SZGYA_WPF_HasznaltAuto
 {
-    public enum Fuel
+    public enum FuelType_t
     {
         [Description("Mindegy")]
         ALL = 0,
@@ -22,7 +23,7 @@ namespace SZGYA_WPF_HasznaltAuto
         ELECTRIC 
     }
 
-    public enum Form
+    public enum FormFactor_t
     {
         [Description("Mindegy")]
         ALL = 0,
@@ -46,8 +47,11 @@ namespace SZGYA_WPF_HasznaltAuto
 
         public string Name { get; set; }
 
-        public Form FormFactor { get; set; }
-        public Fuel FuelType { get; set; }
+        public FormFactor_t FormFactor { get; set; }
+
+        public string GetFormFactorDesc => EnumHelper.Description(FormFactor);
+
+        public FuelType_t FuelType { get; set; }
         public int ReleaseYear { get; set; }
         public double Price { get; set; }   
         public string Description { get; set; }

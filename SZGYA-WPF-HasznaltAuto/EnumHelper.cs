@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Markup;
 
 namespace SZGYA_WPF_HasznaltAuto
-{
+{ 
+
     public class ValueDescription
     {
         public object Value { get; set; }
